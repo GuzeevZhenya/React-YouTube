@@ -1,0 +1,29 @@
+.favourite__item {
+  background-color: rgb(255, 255, 255);
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.favourite__block {
+}
+
+.favourite__button {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.favourite__button:last-child {
+  margin-left: 30px;
+}
+
+.favourite__button--change {
+  color: #1390e5;
+}
+
+.favourite__button--remove {
+  color: #ff0000;
+}
