@@ -1,30 +1,49 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import { Route, NavLink } from "react-router-dom";
+import { videoApi } from "../../api";
 import "./Form.css";
 
 export const Form = ({ setShowForm }) => {
   const [sortingType, setSortingType] = useState("date");
-  const [formName, setFormName] = useState("");
+  const [formName, setFormName] = useState('');
   const [rangeValue, setRangeValue] = useState(4);
+  const [request, setRequest] = useState();
+
+  const [nameIsValid, setNameIsValid] = useState(false);
 
   const dispatch = useDispatch();
   const searchReducer = useSelector((state) => state.videoReducer);
 
+  // useEffect(() => {
+  //   if (formName === null || formName === '' || formName === undefined) {
+  //     setNameIsValid(false);
+  //     console.log(nameIsValid)
+  //   }else{ 
+     
+  //     setNameIsValid(true);
+  //     console.log(nameIsValid)
+  //   }
+     
+  // }, [formName]);
+
   const setFormDate = (e) => {
     e.preventDefault();
     const randomId = `f${(~~(Math.random() * 1e8)).toString(16)}`;
-
+    setRequest(searchReducer.searchFilm);
     dispatch({
       type: "SET_DATA",
-      value: { sortingType, formName, rangeValue, id: randomId },
+      value: { sortingType,request:searchReducer.searchFilm , formName, rangeValue, id: randomId },
     });
     setShowForm(false);
   };
 
+
   const closeForm = (e) => {
     setShowForm(false);
   };
+
+  
 
   return (
     <div>
@@ -42,9 +61,11 @@ export const Form = ({ setShowForm }) => {
           </label>
           <label>
             <span>*Название</span>
+            <span className="form-validation">{formName.length < 3 ? 'Название должно иметь больше 2х символов' : null}</span>
             <input
               placeholder="Укажите название"
               onChange={(e) => setFormName(e.target.value)}
+              className={formName.length <= 3 ? 'error' : null}
             />
           </label>
           <label>
@@ -86,6 +107,7 @@ export const Form = ({ setShowForm }) => {
           <button
             onClick={(e) => setFormDate(e)}
             className="form-button button-save"
+            disabled={formName.length < 3 ? true : false}
           >
             Сохранять
           </button>
@@ -95,21 +117,45 @@ export const Form = ({ setShowForm }) => {
   );
 };
 
-export const FavouriteForm = ({ formInfo }) => {
+
+export const FavouriteForm = ({ formInfo, setShowForm }) => {
+  
   const searchReducer = useSelector((state) => state.videoReducer);
-    console.log(formInfo[0])
+  const dispatch = useDispatch();
+  
+ 
+  const closeForm = (e) => {
+    setShowForm(false);
+  };
+  const getRequest = () => {
+     console.log(searchReducer)
+    videoApi
+    .getVideo(formInfo[0].request, formInfo[0].rangeValue)
+    .then((data) => dispatch({ type: "ADD_VIDEO", value: data }));
+   }
   return (
-    <div>
-      <div>
-        <span>Название:{formInfo[0].formName}</span>
-        <span>Запрос:</span>
-        <span>Сортировка:{formInfo[0].sortingType}</span>
-        <span>Max количество видео:{formInfo[0].rangeValue}</span>
+    <div className="favouriteForm">
+      <div className="favouriteForm__info">
+        <span>Название: «{formInfo[0].formName}»</span>
+        <span>Запрос: «{formInfo[0].request}»</span>
+        <span>Сортировка: «{formInfo[0].sortingType}»</span>
+        <span>Max количество видео: «{formInfo[0].rangeValue}»</span>
       </div>
-      <div>
-        <button>Отмена</button>
-        <button>Выполнить</button>
-      </div>
+      <div className="form-buttons">
+      <button
+        onClick={() => closeForm()}
+        className="form-button button-dns"
+      >
+        Не Сохранять
+      </button>
+        <NavLink
+        to={`/Main`}
+        onClick={(e) => getRequest(e)}
+        className="form-button button-save"
+      >
+        Выполнить
+      </NavLink>
+    </div>
     </div>
   );
 };

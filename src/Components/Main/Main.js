@@ -12,16 +12,20 @@ export const Main = () => {
 
   const [cardPosition, setCardPosition] = useState("row");
   const [showForm, setShowForm] = useState(false);
+  const [searchFilm, setSearchFilt] = useState('');
+ 
 
   const getVideo = () => {
+    dispatch({ type: "CHANGE_FILM", value:searchFilm });
     videoApi
-      .getVideo(searchReducer.searchFilm)
+      .getVideo(searchFilm)
       .then((data) => dispatch({ type: "ADD_VIDEO", value: data }));
   };
 
   const changeFilm = (value) => {
-    dispatch({ type: "CHANGE_FILM", value });
+    setSearchFilt(value);
   };
+  
 
   const cardsPosition = (name) => {
     setCardPosition(name);
@@ -34,6 +38,8 @@ export const Main = () => {
   const closeForm = () => {
     setShowForm(false);
   };
+
+  
 
   return (
     <div>
@@ -59,33 +65,34 @@ export const Main = () => {
             Найти
           </button>
         </div>
-        <div className="main__panel">
-          <div>
-            <p className="main__panel-title">
-              Видео по запросу: <span>{searchReducer.searchFilm}</span>
-            </p>
-          </div>
-          <div>
-            <button
-              onClick={(e) => cardsPosition(e.target.name)}
-              name="column"
-              className={
-                cardPosition === "column"
-                  ? `main__panel-button--column main__panel-button--column--active`
-                  : `main__panel-button--column`
-              }
-            ></button>
-            <button
-              onClick={(e) => cardsPosition(e.target.name)}
-              name="row"
-              className={
-                cardPosition === "row"
-                  ? `main__panel-button--row main__panel-button--row--active`
-                  : "main__panel-button--row"
-              }
-            ></button>
-          </div>
+        {searchReducer.searchFilm ? <div className="main__panel">
+        <div>
+          <p className="main__panel-title">
+            Видео по запросу: <span>{searchReducer.searchFilm}</span>
+          </p>
         </div>
+        <div>
+          <button
+            onClick={(e) => cardsPosition(e.target.name)}
+            name="column"
+            className={
+              cardPosition === "column"
+                ? `main__panel-button--column main__panel-button--column--active`
+                : `main__panel-button--column`
+            }
+          ></button>
+          <button
+            onClick={(e) => cardsPosition(e.target.name)}
+            name="row"
+            className={
+              cardPosition === "row"
+                ? `main__panel-button--row main__panel-button--row--active`
+                : "main__panel-button--row"
+            }
+          ></button>
+        </div>
+      </div> : null}
+        
         <Video position={cardPosition} />
       </div>
     </div>

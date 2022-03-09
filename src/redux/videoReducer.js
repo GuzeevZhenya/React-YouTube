@@ -6,6 +6,7 @@ const initialState = {
 
 export const videoReducer = (state = initialState, action) => {
   switch (action.type) {
+   
     case "SEARCH_VIDEO":
       return {
         ...state,
@@ -22,7 +23,7 @@ export const videoReducer = (state = initialState, action) => {
         searchFilm: action.value,
       };
     case "SET_DATA":
-     
+      console.log(action.value)
       return {
         ...state,
         formDate:[...state.formDate, action.value],

@@ -41,7 +41,7 @@ export default function Favourite() {
     <div>
       <h1>Избранное</h1>
       {favouriteDate}
-      {showForm ? <FavouriteForm formInfo={formInfo} /> : null}
+      {showForm ? <FavouriteForm setShowForm={ setShowForm} formInfo={formInfo} /> : null}
     </div>
   );
 }

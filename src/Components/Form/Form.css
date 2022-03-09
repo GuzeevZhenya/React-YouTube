@@ -45,6 +45,15 @@
   text-align: start;
 }
 
+.main__form .error{
+  border: 1px solid red;
+}
+
+.main__form .form-validation{
+  color: red;
+  margin: 5px 0;
+}
+
 .main__form input,
 .form-sorting {
   width: 430px;
@@ -85,3 +94,38 @@
   background: #1390e5;
   border-radius: 5px;
 }
+
+.favouriteForm{
+  position: absolute;
+  z-index: 10000;
+  display: flex;
+  max-width: 510px;
+  background: #ffffff;
+  box-shadow: 0px 10px 50px rgba(19, 144, 229, 0.8);
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 36px 40px;
+
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.favouriteForm__info{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+ 
+}
+.favouriteForm__info span{
+  font-size: 16px;
+  display: flex;
+  justify-content: flex-start;
+  margin: 2px 0;
+}
+.favouriteForm__buttons{
+  transition: all .3s cubic-bezier(.645,.045,.355,1);
+}
+ 
