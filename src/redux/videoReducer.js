@@ -13,14 +13,10 @@ export const videoReducer = (state = initialState, action) => {
         searchFilm: action.value,
       };
     case "ADD_VIDEO":
+      console.log(action.value)
       return {
         ...state,
         videos: action.value,
-      };
-    case "CHANGE_FILM":
-      return {
-        ...state,
-        searchFilm: action.value,
       };
     case "SET_DATA":
       console.log(action.value)

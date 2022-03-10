@@ -1,9 +1,15 @@
 import * as axios from "axios";
-const key = "AIzaSyAbrSA5hr8gmlPTcWZ1cmpIfjNC1it0VKw";
+const key = "AIzaSyBM3Bugpu8gvnH1ON6QuLtpkr_3qpbuWyc";
 const maxResult = 4;
 const search = "Чем кормить кота";
-// https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyAbrSA5hr8gmlPTcWZ1cmpIfjNC1it0VKw&type=video&q=ajax
+const id = '5qtC-tsQ-wE';
+// https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyBM3Bugpu8gvnH1ON6QuLtpkr_3qpbuWyc&type=video&q=ajax
 
+
+//Статистика
+// https://www.googleapis.com/youtube/v3/videos?part=statistics&id=5qtC-tsQ-wE&key=AIzaSyBM3Bugpu8gvnH1ON6QuLtpkr_3qpbuWyc&t
+
+//Данные по видео
 export const videoApi = {
   getVideo(name = search,maxResult = 4) {
     return axios
@@ -18,3 +24,14 @@ export const videoApi = {
       .then((resonse) => resonse.data);
   },
 };
+
+
+//Подробная инфа по видео
+export const videoInfoApi = {
+  getVideoInfo(id) {
+    return axios
+      .get(
+      `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${id}&key=${key}`
+    )
+  }
+}
