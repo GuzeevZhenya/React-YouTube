@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/React-YouTube/static/css/main.94ff612c.chunk.css",
-    "main.js": "/React-YouTube/static/js/main.0b56d0af.chunk.js",
-    "main.js.map": "/React-YouTube/static/js/main.0b56d0af.chunk.js.map",
+    "main.css": "/React-YouTube/static/css/main.cc2185cc.chunk.css",
+    "main.js": "/React-YouTube/static/js/main.db2003d6.chunk.js",
+    "main.js.map": "/React-YouTube/static/js/main.db2003d6.chunk.js.map",
     "runtime-main.js": "/React-YouTube/static/js/runtime-main.353e43e4.js",
     "runtime-main.js.map": "/React-YouTube/static/js/runtime-main.353e43e4.js.map",
     "static/js/2.024b5d06.chunk.js": "/React-YouTube/static/js/2.024b5d06.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.c2b2c0c4.chunk.js": "/React-YouTube/static/js/3.c2b2c0c4.chunk.js",
     "static/js/3.c2b2c0c4.chunk.js.map": "/React-YouTube/static/js/3.c2b2c0c4.chunk.js.map",
     "index.html": "/React-YouTube/index.html",
-    "static/css/main.94ff612c.chunk.css.map": "/React-YouTube/static/css/main.94ff612c.chunk.css.map",
+    "static/css/main.cc2185cc.chunk.css.map": "/React-YouTube/static/css/main.cc2185cc.chunk.css.map",
     "static/js/2.024b5d06.chunk.js.LICENSE.txt": "/React-YouTube/static/js/2.024b5d06.chunk.js.LICENSE.txt",
     "static/media/eye-off.b647f74c.svg": "/React-YouTube/static/media/eye-off.b647f74c.svg",
     "static/media/eye.9ea16cf9.svg": "/React-YouTube/static/media/eye.9ea16cf9.svg",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.353e43e4.js",
     "static/js/2.024b5d06.chunk.js",
-    "static/css/main.94ff612c.chunk.css",
-    "static/js/main.0b56d0af.chunk.js"
+    "static/css/main.cc2185cc.chunk.css",
+    "static/js/main.db2003d6.chunk.js"
   ]
 }
