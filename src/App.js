@@ -8,25 +8,23 @@ import { MainPages } from './pages/Main';
 function App() {
   const dispatch = useDispatch();
   const registrationReducer = useSelector((state) => state.registationReducer);
-  
+
   const RouteInfo = (
-      <Switch>
-        <Route exact path="/">
-          <MainPages />
-        </Route>
-        <Route path="/Favourite" exact component={FavouritePages} />
-        <Route path="/Registration" exact component={RegistrationPages} />
-        <Route path="/Main" exact component={MainPages} />
-      </Switch>
-     
+    <Switch>
+      <Route exact path="/">
+        <MainPages />
+      </Route>
+      <Route path="/Favourite" exact component={FavouritePages} />
+      <Route path="/Registration" exact component={RegistrationPages} />
+      <Route path="/Main" exact component={MainPages} />
+      <Route component={MainPages} />
+    </Switch>
   );
 
   return (
     <BrowserRouter>
       <div className="App">
-
-          {registrationReducer.exces ? <div>{ RouteInfo }</div> : <RegistrationPages />}
-         
+        {registrationReducer.exces ? <div>{RouteInfo}</div> : <RegistrationPages />}
       </div>
     </BrowserRouter>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
- 
+
 import { videoApi } from '../../api';
 import { Form } from '../Form/Form';
 import './Main.css';
@@ -24,6 +24,12 @@ export const Main = () => {
     setSearchFilm(value);
   };
 
+  const findFilmByEnter = (e) => {
+    if (e.keyCode === 13) {
+      getVideo();
+    }
+  };
+
   const cardsPosition = (name) => {
     setCardPosition(name);
   };
@@ -39,8 +45,6 @@ export const Main = () => {
   return (
     <div>
       {showForm ? <Form setShowForm={setShowForm} /> : null}
-
-    
       <div className="main">
         <div className="container">
           <h1 className="main__title">Поиск видео</h1>
@@ -50,6 +54,7 @@ export const Main = () => {
               onChange={(e) => findFilm(e.target.value)}
               className="main__search-input"
               placeholder="Что хотите посмотреть?"
+              onKeyDown={(e) => findFilmByEnter(e)}
             />
             {searchReducer.searchFilm !== '' ? (
               <span onClick={clickForm} className="main__search-input--heart" />

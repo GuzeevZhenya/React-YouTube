@@ -24,6 +24,7 @@ export const Registration = () => {
 
   return (
     <form action="" className="box" method="post">
+      <div className='box-container'>
       <img src={logo} alt='Логотип'/>
       <h1>Вход</h1>
       <div className="input__container">
@@ -56,6 +57,8 @@ export const Registration = () => {
       <NavLink to={`/Main`} className="box__button" type="submit" onClick={handleSubmit}>
         Вход
       </NavLink>
+      </div>
+      
     </form>
   );
 };

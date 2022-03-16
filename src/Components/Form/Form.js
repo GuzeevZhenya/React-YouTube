@@ -6,7 +6,7 @@ import './Form.css';
 
 export const Form = ({ setShowForm,formInfo,changeValue }) => {
   const [ sortingType, setSortingType ] = useState(formInfo === undefined ? 'date' : formInfo[0].sortingType);
-  const [ formName, setFormName ] = useState(formInfo === undefined ? '' : formInfo[0].formName);
+  const [ formName, setFormName ] = useState(formInfo === undefined ? null : formInfo[0].formName);
   const [rangeValue, setRangeValue] = useState(4);
   const [id, setId] = useState(formInfo === undefined ? '' : formInfo[0].id );
   
@@ -43,7 +43,7 @@ export const Form = ({ setShowForm,formInfo,changeValue }) => {
   const closeForm = (e) => {
     setShowForm(false);
   };
-
+  
 
   return (
     <div>
@@ -74,9 +74,8 @@ export const Form = ({ setShowForm,formInfo,changeValue }) => {
             />
           </label>
           <label>
-            {/* <span>Сортировать по</span>
-              <input placeholder="Без сортировки" /> */}
-            <select
+             <span>Сортировать по</span>
+              <select
               value={sortingType}
               onChange={(e) => setSortingType(e.target.value)}
               className="form-sorting"
@@ -100,7 +99,7 @@ export const Form = ({ setShowForm,formInfo,changeValue }) => {
             <span>{rangeValue}</span>
           </label>
         </div>
-
+      
         <div className="form-buttons">
           <button onClick={() => closeForm()} className="form-button button-dns">
             Не Сохранять
@@ -108,8 +107,8 @@ export const Form = ({ setShowForm,formInfo,changeValue }) => {
           <button
             onClick={(e) => setFormDate(e)}
             className="form-button button-save"
-            disabled={formName && formName.length < 3 ? true : false}>
-            Сохранять
+            disabled={formName && formName.length >= 3 ? false : true}>  
+            Сохранить
           </button>
         </div>
       </form>
