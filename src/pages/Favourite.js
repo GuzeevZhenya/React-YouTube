@@ -7,8 +7,9 @@ export const FavouritePages = () => {
   return (
     <div>
       <Navigation />
-      <Favourite/>
-    
+      <div className="container">
+        <Favourite />
+        </div>
     </div>
   );
 };

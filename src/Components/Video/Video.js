@@ -10,7 +10,6 @@ export const Video = ({ position }) => {
   const videoReducer = useSelector((state) => state.videoReducer);
 
   
-
   const video =
     videoReducer.videos.items &&
     videoReducer.videos.items.map((item) => (

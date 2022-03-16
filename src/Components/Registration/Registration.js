@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import logo from "../../img/sibdev-logo.svg";
-import passwordEye from "../../img/eye-off.svg";
-import passwordVisible from "../../img/eye.svg";
+import React, { useState} from 'react';
+import {useDispatch } from 'react-redux';
+import logo from '../../img/sibdev-logo.svg';
+import passwordEye from '../../img/eye-off.svg';
+import passwordVisible from '../../img/eye.svg';
 
-import "./Registration.css";
+import './Registration.css';
+import { NavLink } from 'react-router-dom';
 
 export const Registration = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
+  const [ email, setEmail ] = useState('');
+  const [ password, setPassword ] = useState('');
+  const [ isVisiblePassword, setIsVisiblePassword ] = useState(false);
 
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.registationReducer);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch({ type: "CHECK_USERDATA", value: { email, password } });
+    dispatch({ type: 'CHECK_USERDATE', value: { email, password } });
   };
 
   const setVisiblePassword = () => {
@@ -25,7 +24,7 @@ export const Registration = () => {
 
   return (
     <form action="" className="box" method="post">
-      <img src={logo} />
+      <img src={logo} alt='Логотип'/>
       <h1>Вход</h1>
       <div className="input__container">
         <label htmlFor="email">Email</label>
@@ -41,22 +40,22 @@ export const Registration = () => {
         <label htmlFor="password">Password</label>
         <input
           className="box__input"
-          type={isVisiblePassword ? "text" : "password"}
+          type={isVisiblePassword ? 'text' : 'password'}
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <div className="password__btn" onClick={() => setVisiblePassword()}>
           {isVisiblePassword ? (
-            <img className="password__btn-img" src={passwordVisible} />
+            <img className="password__btn-img" src={passwordVisible} alt={passwordVisible}/>
           ) : (
-            <img className="password__btn-img" src={passwordEye} />
+            <img className="password__btn-img" src={passwordEye} alt={passwordVisible} />
           )}
         </div>
       </div>
-      <button className="box__button" type="submit" onClick={handleSubmit}>
+      <NavLink to={`/Main`} className="box__button" type="submit" onClick={handleSubmit}>
         Вход
-      </button>
+      </NavLink>
     </form>
   );
 };
