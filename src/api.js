@@ -11,7 +11,7 @@ const id = '5qtC-tsQ-wE';
 
 //Данные по видео
 export const videoApi = {
-  getVideo(name = search,maxResult = 4) {
+  getVideo(name = search,maxResult = 12) {
     return axios
       .get(
         ` https://www.googleapis.com/youtube/v3/search?key=` +

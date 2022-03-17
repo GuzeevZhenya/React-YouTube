@@ -53,7 +53,7 @@ export const Form = ({ setShowForm,formInfo,changeValue }) => {
           <label>
             <span>Запрос</span>
             <input
-              className="input-disabled"
+              className={changeValue ? '' : 'input-disabled'}
               disabled={changeValue ? false : true}
               value={changeValue ? request : searchReducer.searchFilm}
               placeholder="чем кормить кота"

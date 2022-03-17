@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { videoApi } from '../../api';
 import { Form } from '../Form/Form';
 import './Main.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Video } from '../Video/Video';
+import axios from 'axios';
+import Pagination from '../Pagination/Pagination';
 
 export const Main = () => {
   const dispatch = useDispatch();
@@ -14,15 +16,25 @@ export const Main = () => {
   const [ showForm, setShowForm ] = useState(false);
   const [ searchFilm, setSearchFilm ] = useState(null);
 
+  const [ currentPage, setCurrentPage ] = useState(1);
+  const [ moviesPerPages, setMoviesPerPages ] = useState(12);
+
   const getVideo = () => {
     setSearchFilm('');
     dispatch({ type: 'SEARCH_VIDEO', value: searchFilm });
     videoApi.getVideo(searchFilm).then((data) => dispatch({ type: 'ADD_VIDEO', value: data }));
   };
 
+  const lastMoviesIndex = currentPage * moviesPerPages;
+  const firstMoviesIndex = lastMoviesIndex - moviesPerPages;
+  // const currentMovie = 
+
+ 
   const findFilm = (value) => {
     setSearchFilm(value);
   };
+
+ 
 
   const findFilmByEnter = (e) => {
     if (e.keyCode === 13) {
@@ -37,6 +49,9 @@ export const Main = () => {
   const clickForm = () => {
     setShowForm(!showForm);
   };
+
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+  console.log(currentPage)
 
   // const closeForm = () => {
   //   setShowForm(false);
@@ -73,6 +88,7 @@ export const Main = () => {
                 <p className="main__panel-title">
                   Видео по запросу:{' '}
                   <span>&#8249;&#8249;{searchReducer.searchFilm}&#8250;&#8250;</span>
+                  <span>Всего видео: {searchReducer.videos.pageInfo.totalResults}</span>
                 </p>
               </div>
               <div>
@@ -103,6 +119,7 @@ export const Main = () => {
           ) : null}
 
           <Video position={cardPosition} />
+          <Pagination moviesPerPages={moviesPerPages} totalMovies={searchReducer.videos.pageInfo.totalResults} paginate={paginate}/>
         </div>
       </div>
     </div>
