@@ -1,22 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { useSelector, useDispatch } from 'react-redux';
 
-import "./Video.css";
+import './Video.css';
 
 export const Video = ({ position }) => {
   const dispatch = useDispatch();
   const videoReducer = useSelector((state) => state.videoReducer);
 
-  
   const video =
     videoReducer.videos.items &&
     videoReducer.videos.items.map((item) => (
-      <div
-         className="video__item"
-        key={item.id.videoId}
-      >
+      <div className="video__item" key={item.id.videoId}>
         <a href={`https://www.youtube.com/watch?v=${item.id.videoId}`}>
           <img
             src={item.snippet.thumbnails.medium.url}
@@ -28,7 +23,7 @@ export const Video = ({ position }) => {
         </a>
         <div>
           <p>{item.snippet.channelTitle}</p>
-          <p></p>
+          <p />
         </div>
       </div>
     ));

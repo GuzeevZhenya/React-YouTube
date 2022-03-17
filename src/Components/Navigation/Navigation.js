@@ -32,6 +32,8 @@ export const Navigation = () => {
   const exitFromPages = () => {
     dispatch({ type: 'EXIT', action: false });
   };
+
+  
   return (
     <div className="navigation">
       <div className="container">
