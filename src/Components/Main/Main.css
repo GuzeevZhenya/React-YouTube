@@ -1,3 +1,4 @@
+
 .main__title {
   display: flex;
   font-size: 36px;
@@ -70,7 +71,7 @@
   opacity: 0.1;
   width: 24px;
   height: 24px;
-  background-image: url("../../img/grid.svg");
+  background-image: url("../../img/list.svg");
 }
 
 .main__panel-button--row {
@@ -78,7 +79,8 @@
   margin-left: 10px;
   width: 24px;
   height: 24px;
-  background-image: url("../../img/list.svg");
+  
+  background-image: url("../../img/grid.svg");
 }
 
 .main__panel-button--column--active {

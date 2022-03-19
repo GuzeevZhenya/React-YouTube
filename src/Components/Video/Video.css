@@ -20,11 +20,11 @@
   margin-top: 20px;
 }
 
-.video__container--row {
+.video__container--column {
   flex-direction: column;
 }
 
-.video__container--column {
+.video__container--row {
   flex-direction: row;
 }
 

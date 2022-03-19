@@ -1,0 +1,43 @@
+ 
+.pagesNotFound{
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	font-style: italic;
+	transform: translateY(-50%);
+	text-align: center;
+	color: #343434;
+}
+
+.pagesNotFound__error-title{
+	font-size: 160px;
+	font-style: italic;
+	margin: 0;
+	font-weight: 900;
+	letter-spacing: 20px;
+	background: url('../../img/bg.jpg') center no-repeat;
+	-webkit-text-fill-color: transparent;
+	-webkit-background-clip: text;
+}
+
+.pagesNotFound__info{
+	font-size: 24px;
+	font-style: italic;
+}
+
+.pagesNotFound__button{
+	text-decoration: none;
+	background: #e55039aa;
+	color: #fff;
+	padding: 12px 24px;
+	display: inline-block;
+	border-radius: 25px;
+	font-size: 14px;
+	text-transform: uppercase;
+	transition: 0.4s;
+	margin-top: 20px;
+}
+
+.pagesNotFound__button:hover{
+	background: #e55039;
+}

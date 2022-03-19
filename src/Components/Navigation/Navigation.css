@@ -1,8 +1,12 @@
-.navigation {
+.navigation{
+  background: #FFFFFF;
+}
+
+.navigation .container {
   display: flex;
   justify-content: space-between;
   padding: 20px 0px 40px 0;
-  background: #FFFFFF;
+ 
   align-items: center;
 }
 
