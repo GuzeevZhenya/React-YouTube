@@ -57,6 +57,8 @@ export const Main = () => {
   //   setShowForm(false);
   // };
 
+   
+
   return (
     <div>
       {showForm ? <Form setShowForm={setShowForm} /> : null}
@@ -88,7 +90,7 @@ export const Main = () => {
                 <p className="main__panel-title">
                   Видео по запросу:{' '}
                   <span>&#8249;&#8249;{searchReducer.searchFilm}&#8250;&#8250;</span>
-                  <span>Всего видео: {searchReducer.videos.pageInfo.totalResults}</span>
+                  {/* <span>Всего видео: {searchReducer.videos.pageInfo.totalResults && searchReducer.videos.pageInfo.totalResults}</span> */}
                 </p>
               </div>
               <div>
@@ -119,7 +121,7 @@ export const Main = () => {
           ) : null}
 
           <Video position={cardPosition} />
-          <Pagination moviesPerPages={moviesPerPages} totalMovies={searchReducer.videos.pageInfo.totalResults} paginate={paginate}/>
+          <Pagination moviesPerPages={moviesPerPages} totalMovies={searchReducer.videos.pageInfo.totalResults ? searchReducer.videos.pageInfo.totalResults : 20} paginate={paginate}/>
         </div>
       </div>
     </div>
