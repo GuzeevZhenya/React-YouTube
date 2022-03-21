@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/React-YouTube/static/css/main.0bb77537.chunk.css",
-    "main.js": "/React-YouTube/static/js/main.d1b75b9a.chunk.js",
-    "main.js.map": "/React-YouTube/static/js/main.d1b75b9a.chunk.js.map",
+    "main.css": "/React-YouTube/static/css/main.60252f16.chunk.css",
+    "main.js": "/React-YouTube/static/js/main.386b6b14.chunk.js",
+    "main.js.map": "/React-YouTube/static/js/main.386b6b14.chunk.js.map",
     "runtime-main.js": "/React-YouTube/static/js/runtime-main.353e43e4.js",
     "runtime-main.js.map": "/React-YouTube/static/js/runtime-main.353e43e4.js.map",
     "static/js/2.6b50cbeb.chunk.js": "/React-YouTube/static/js/2.6b50cbeb.chunk.js",
@@ -10,19 +10,19 @@
     "static/js/3.c2b2c0c4.chunk.js": "/React-YouTube/static/js/3.c2b2c0c4.chunk.js",
     "static/js/3.c2b2c0c4.chunk.js.map": "/React-YouTube/static/js/3.c2b2c0c4.chunk.js.map",
     "index.html": "/React-YouTube/index.html",
-    "static/css/main.0bb77537.chunk.css.map": "/React-YouTube/static/css/main.0bb77537.chunk.css.map",
+    "static/css/main.60252f16.chunk.css.map": "/React-YouTube/static/css/main.60252f16.chunk.css.map",
     "static/js/2.6b50cbeb.chunk.js.LICENSE.txt": "/React-YouTube/static/js/2.6b50cbeb.chunk.js.LICENSE.txt",
     "static/media/PageNotFound.css": "/React-YouTube/static/media/bg.e3a3c01a.jpg",
-    "static/media/eye-off.95ea8c76.svg": "/React-YouTube/static/media/eye-off.95ea8c76.svg",
-    "static/media/eye.beec6a16.svg": "/React-YouTube/static/media/eye.beec6a16.svg",
-    "static/media/Main.css": "/React-YouTube/static/media/list.0db44f7d.svg",
-    "static/media/sibdev-logo-mini.3ff9746b.svg": "/React-YouTube/static/media/sibdev-logo-mini.3ff9746b.svg",
-    "static/media/sibdev-logo.3c6e91ac.svg": "/React-YouTube/static/media/sibdev-logo.3c6e91ac.svg"
+    "static/media/eye-off.b647f74c.svg": "/React-YouTube/static/media/eye-off.b647f74c.svg",
+    "static/media/eye.9ea16cf9.svg": "/React-YouTube/static/media/eye.9ea16cf9.svg",
+    "static/media/Main.css": "/React-YouTube/static/media/list.ad96ee6d.svg",
+    "static/media/sibdev-logo-mini.a657d529.svg": "/React-YouTube/static/media/sibdev-logo-mini.a657d529.svg",
+    "static/media/sibdev-logo.5e953d99.svg": "/React-YouTube/static/media/sibdev-logo.5e953d99.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.353e43e4.js",
     "static/js/2.6b50cbeb.chunk.js",
-    "static/css/main.0bb77537.chunk.css",
-    "static/js/main.d1b75b9a.chunk.js"
+    "static/css/main.60252f16.chunk.css",
+    "static/js/main.386b6b14.chunk.js"
   ]
 }
