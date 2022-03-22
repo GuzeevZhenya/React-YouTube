@@ -19,6 +19,7 @@ export const Main = () => {
 
   const [ currentPage, setCurrentPage ] = useState(1);
   const [ moviesPerPages ] = useState(12);
+  console.log(movies)
 
   const getVideo = () => {
     setSearchFilm('');
@@ -29,7 +30,7 @@ export const Main = () => {
 
   const lastMoviesIndex = currentPage * moviesPerPages;
   const firstMoviesIndex = lastMoviesIndex - moviesPerPages;
-  const currentMovie = movies.items && movies.items.slice(firstMoviesIndex, lastMoviesIndex);
+  const currentMovie = movies && movies.items.slice(firstMoviesIndex, lastMoviesIndex);
 
   // const findFilm = (value) => {
   //   setSearchFilm(value);
