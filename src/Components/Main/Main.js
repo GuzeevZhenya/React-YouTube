@@ -15,26 +15,31 @@ export const Main = () => {
   const [ cardPosition, setCardPosition ] = useState('row');
   const [ showForm, setShowForm ] = useState(false);
   const [ searchFilm, setSearchFilm ] = useState(null);
-  const [ movies, setMovies ] = useState(searchReducer.videos.items && searchReducer.videos.items);
+  // const [ movies, setMovies ] = useState(searchReducer.videos.items && searchReducer.videos.items);
+  const [ movies, setMovies ] = useState(searchReducer.searchFilm && searchReducer.searchFilm);
 
   const [ currentPage, setCurrentPage ] = useState(1);
   const [ moviesPerPages ] = useState(12);
-  console.log(movies)
+  
 
   const getVideo = () => {
     setSearchFilm('');
-    videoApi.getVideo(searchFilm).then((data) => setMovies(data));
+    // videoApi.getVideo(searchFilm).then((data) => setMovies(data));
     dispatch({ type: 'SEARCH_VIDEO', value: searchFilm });
-    // videoApi.getVideo(searchFilm).then((data) => dispatch({ type: 'ADD_VIDEO', value: data }));
+     videoApi.getVideo(searchFilm).then((data) => dispatch({ type: 'ADD_VIDEO', value: data }));
   };
 
   const lastMoviesIndex = currentPage * moviesPerPages;
   const firstMoviesIndex = lastMoviesIndex - moviesPerPages;
-  const currentMovie = movies && movies.items.slice(firstMoviesIndex, lastMoviesIndex);
+  const currentMovie = searchReducer.videos.items && searchReducer.videos.items.slice(firstMoviesIndex, lastMoviesIndex);
 
+ 
+  
   // const findFilm = (value) => {
   //   setSearchFilm(value);
   // };
+
+ 
 
   const findFilmByEnter = (e) => {
     if (e.keyCode === 13) {
