@@ -15,30 +15,25 @@ export const Main = () => {
   const [ cardPosition, setCardPosition ] = useState('row');
   const [ showForm, setShowForm ] = useState(false);
   const [ searchFilm, setSearchFilm ] = useState(null);
-  const [movies, setMovies] = useState([]);
-
+  const [ movies, setMovies ] = useState(searchReducer.videos.items && searchReducer.videos.items);
 
   const [ currentPage, setCurrentPage ] = useState(1);
-  const [ moviesPerPages] = useState(12);
+  const [ moviesPerPages ] = useState(12);
 
   const getVideo = () => {
     setSearchFilm('');
-    videoApi.getVideo(searchFilm).then((data)=>setMovies(data))
+    videoApi.getVideo(searchFilm).then((data) => setMovies(data));
     dispatch({ type: 'SEARCH_VIDEO', value: searchFilm });
-    videoApi.getVideo(searchFilm).then((data) => dispatch({ type: 'ADD_VIDEO', value: data }));
+    // videoApi.getVideo(searchFilm).then((data) => dispatch({ type: 'ADD_VIDEO', value: data }));
   };
 
   const lastMoviesIndex = currentPage * moviesPerPages;
   const firstMoviesIndex = lastMoviesIndex - moviesPerPages;
-  const currentMovie =movies.items && movies.items.slice(firstMoviesIndex,lastMoviesIndex)
-   console.log(lastMoviesIndex,firstMoviesIndex)
+  const currentMovie = movies.items && movies.items.slice(firstMoviesIndex, lastMoviesIndex);
 
- 
-  const findFilm = (value) => {
-    setSearchFilm(value);
-  };
-
- 
+  // const findFilm = (value) => {
+  //   setSearchFilm(value);
+  // };
 
   const findFilmByEnter = (e) => {
     if (e.keyCode === 13) {
@@ -54,8 +49,7 @@ export const Main = () => {
     setShowForm(!showForm);
   };
 
-  const paginate = pageNumber => setCurrentPage(pageNumber);
-  
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // const closeForm = () => {
   //   setShowForm(false);
@@ -70,7 +64,7 @@ export const Main = () => {
           <div className="main__search">
             <input
               value={searchFilm}
-              onChange={(e) => findFilm(e.target.value)}
+              onChange={(e) => setSearchFilm(e.target.value)}
               className="main__search-input"
               placeholder="Что хотите посмотреть?"
               onKeyDown={(e) => findFilmByEnter(e)}
@@ -86,44 +80,56 @@ export const Main = () => {
               Найти
             </button>
           </div>
-          {searchReducer.searchFilm ? (
-            <div className="main__panel">
-              <div>
-                <p className="main__panel-title">
-                  Видео по запросу:{' '}
-                  <span>&#8249;&#8249;{searchReducer.searchFilm}&#8250;&#8250;</span>
-                  <span>Всего видео: {searchReducer.videos.pageInfo.totalResults}</span>
-                </p>
+          {currentMovie ? (
+            <div className="main__video">
+              <div className="main__panel">
+                <div>
+                  <p className="main__panel-title">
+                    Видео по запросу:{' '}
+                    <span>&#8249;&#8249;{searchReducer.searchFilm}&#8250;&#8250;</span>
+                    <span>Всего видео: {searchReducer.videos.pageInfo.totalResults}</span>
+                  </p>
+                </div>
+                <div>
+                  <button
+                    onClick={(e) => cardsPosition(e.target.name)}
+                    name="column"
+                    className={
+                      cardPosition === 'column' ? (
+                        `main__panel-button--column main__panel-button--column--active`
+                      ) : (
+                        `main__panel-button--column`
+                      )
+                    }
+                  />
+                  <button
+                    onClick={(e) => cardsPosition(e.target.name)}
+                    name="row"
+                    className={
+                      cardPosition === 'row' ? (
+                        `main__panel-button--row main__panel-button--row--active`
+                      ) : (
+                        'main__panel-button--row'
+                      )
+                    }
+                  />
+                </div>
               </div>
-              <div>
-                <button
-                  onClick={(e) => cardsPosition(e.target.name)}
-                  name="column"
-                  className={
-                    cardPosition === 'column' ? (
-                      `main__panel-button--column main__panel-button--column--active`
-                    ) : (
-                      `main__panel-button--column`
-                    )
-                  }
-                />
-                <button
-                  onClick={(e) => cardsPosition(e.target.name)}
-                  name="row"
-                  className={
-                    cardPosition === 'row' ? (
-                      `main__panel-button--row main__panel-button--row--active`
-                    ) : (
-                      'main__panel-button--row'
-                    )
-                  }
-                />
+              <div className='main__video-info'>
+              <Video movies={currentMovie} position={cardPosition} />
+              <Pagination
+                moviesPerPages={moviesPerPages}
+                totalMovies={
+                  searchReducer.videos.pageInfo.totalResults &&
+                  searchReducer.videos.pageInfo.totalResults
+                }
+                paginate={paginate}
+              />
               </div>
             </div>
           ) : null}
 
-          <Video movies={currentMovie} position={cardPosition} />
-          <Pagination moviesPerPages={moviesPerPages} totalMovies={searchReducer.videos.pageInfo.totalResults} paginate={paginate}/>
+       
         </div>
       </div>
     </div>
