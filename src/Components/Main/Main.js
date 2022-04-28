@@ -15,19 +15,23 @@ export const Main = () => {
   const [ cardPosition, setCardPosition ] = useState('row');
   const [ showForm, setShowForm ] = useState(false);
   const [ searchFilm, setSearchFilm ] = useState(null);
+  const [movies, setMovies] = useState([]);
+
 
   const [ currentPage, setCurrentPage ] = useState(1);
-  const [ moviesPerPages, setMoviesPerPages ] = useState(12);
+  const [ moviesPerPages] = useState(12);
 
   const getVideo = () => {
     setSearchFilm('');
+    videoApi.getVideo(searchFilm).then((data)=>setMovies(data))
     dispatch({ type: 'SEARCH_VIDEO', value: searchFilm });
     videoApi.getVideo(searchFilm).then((data) => dispatch({ type: 'ADD_VIDEO', value: data }));
   };
 
   const lastMoviesIndex = currentPage * moviesPerPages;
   const firstMoviesIndex = lastMoviesIndex - moviesPerPages;
-  // const currentMovie = 
+  const currentMovie =movies.items && movies.items.slice(firstMoviesIndex,lastMoviesIndex)
+   console.log(lastMoviesIndex,firstMoviesIndex)
 
  
   const findFilm = (value) => {
@@ -51,7 +55,7 @@ export const Main = () => {
   };
 
   const paginate = pageNumber => setCurrentPage(pageNumber);
-  console.log(currentPage)
+  
 
   // const closeForm = () => {
   //   setShowForm(false);
@@ -120,8 +124,8 @@ export const Main = () => {
             </div>
           ) : null}
 
-          <Video position={cardPosition} />
-          <Pagination moviesPerPages={moviesPerPages} totalMovies={searchReducer.videos.pageInfo.totalResults ? searchReducer.videos.pageInfo.totalResults : 20} paginate={paginate}/>
+          <Video movies={currentMovie} position={cardPosition} />
+          <Pagination moviesPerPages={moviesPerPages} totalMovies={searchReducer.videos.pageInfo.totalResults} paginate={paginate}/>
         </div>
       </div>
     </div>

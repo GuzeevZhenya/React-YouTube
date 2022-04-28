@@ -4,13 +4,18 @@ export default function Pagination({ moviesPerPages, totalMovies, paginate }) {
   console.log(moviesPerPages);
   console.log(totalMovies);
 
-  const pageNumbers = [];
+	// console.log(moviesPerPages)
+	// console.log(totalMovies)
+	
+	const pageNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(totalMovies / moviesPerPages); i++) {
-    if (i < 20) {
-      pageNumbers.push(i);
-    }
-  }
+	for (let i = 1; i <= Math.ceil(totalMovies / moviesPerPages) ; i++){
+		// console.log(totalMovies / moviesPerPages)
+		if (i < 20) {
+			pageNumbers.push(i);
+		}
+		
+	}
 
   return (
     <div>
