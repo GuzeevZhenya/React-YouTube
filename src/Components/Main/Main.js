@@ -88,16 +88,6 @@ export const Main = () => {
               Найти
             </button>
           </div>
-<<<<<<< HEAD
-          {searchReducer.searchFilm ? (
-            <div className="main__panel">
-              <div>
-                <p className="main__panel-title">
-                  Видео по запросу:{' '}
-                  <span>&#8249;&#8249;{searchReducer.searchFilm}&#8250;&#8250;</span>
-                  {/* <span>Всего видео: {searchReducer.videos.pageInfo.totalResults && searchReducer.videos.pageInfo.totalResults}</span> */}
-                </p>
-=======
           {currentMovie ? (
             <div className="main__video">
               <div className="main__panel">
@@ -132,7 +122,6 @@ export const Main = () => {
                     }
                   />
                 </div>
->>>>>>> 9cb4cd005d67d40369e73350e382468e5f9bf670
               </div>
               <div className='main__video-info'>
               <Video movies={currentMovie} position={cardPosition} />
